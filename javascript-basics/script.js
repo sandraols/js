@@ -50,6 +50,7 @@ let currentTime = prompt('What time is it?', '12:00');
 let hours = currentTime.slice(0, currentTime.indexOf(':'));
 let minutes = currentTime.slice(currentTime.indexOf(':') + 1);
 minutes = parseInt(minutes);
+hours = parseInt(hours);
 let hoursLeft = 23 - hours;
 let minutesLeft = 60 - minutes;
 
