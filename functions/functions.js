@@ -133,18 +133,18 @@ console.log(timeToSec(2, 22, 22)); // 8542
 // 3
 // Write a function that accepts the number of seconds, translates it into hours, minutes, and seconds, 
 // and returns as a hh:mm:ss string.
-
 const addZero = number => number < 10 ? `0${number}` : number.toString();
 
 const secondsToTimestamp = (timeInSeconds) => {
     let hours = Math.floor(timeInSeconds / 3600);
-    let minutesDivisor = timeInSeconds % 3600;
-    let minutes = Math.floor(minutesDivisor / 60);
-    let seconds = minutesDivisor % 60; 
+    // let minutesDivisor = timeInSeconds % 3600;
+    let minutes = Math.floor(timeInSeconds / 60) % 60;
+    let seconds = Math.floor(timeInSeconds) % 60;
     return `${addZero(hours)}:${addZero(minutes)}:${addZero(seconds)}`;
 }
 
 console.log(secondsToTimestamp(9979)); // 02:46:19
+
 
 // 4
 // Write a function that counts the difference between the dates. 
