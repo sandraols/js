@@ -1,23 +1,22 @@
-// Create an HTML page with traffic lights and a button that switches the color to the next one.
+// Traffic lights that switches the color to the next one.
 
-let lights = document.getElementsByClassName('light');
 let button = document.getElementById('button');
-let currentLight;
+const redLight = document.getElementById('red-light');
+const orangeLight = document.getElementById('orange-light');
+const greenLight = document.getElementById('green-light');
 
 button.addEventListener('click', function() {
-    console.log(lights);
-    for (let i = 0; i < lights.length; i++) {
-        if (!currentLight) { 
-            console.log(currentLight);
-            console.log(lights.firstChild);
-            lights[i].classList.add('active');
-            currentLight = lights[i];
-        } else {
-            // nextSibling methods returns the next element
-            // currentLight = lights.nextSibling;
-            console.log(currentLight);
-            lights[i].classList.remove('active');
-        }
-        
-}
-  });
+    let activeLight = document.getElementsByClassName('active')[0];
+    activeLight.classList.remove('active');
+    let color = activeLight.id;
+
+    if (color === 'red-light') {
+        orangeLight.classList.add('active');
+    } 
+    if (color === 'orange-light') {
+        greenLight.classList.add('active');
+    }
+    if (color === 'green-light') {
+        redLight.classList.add('active');
+    }
+});

@@ -20,7 +20,7 @@ class Marker {
                 if (charactersPrinted < this.amountOfInk * 2) {
                     newString += char;
                     if (char != ' ') {
-                        charactersPrinted++
+                        charactersPrinted++;
                     }
                 }
             });
