@@ -137,6 +137,12 @@ const purchaseProduct = (groceryName) => {
     });
 }
 
+//other, better solution
+const purchaseProduct = (groceryName) => {
+    let grocery = groceryList.find(grocery => grocery.name === groceryName);
+    grocery.isBought = true;
+}
+
 addProduct('Apple', 3);
 addProduct('Blueberry', 5);
 purchaseProduct('Kiwi');
@@ -192,3 +198,4 @@ const nerdsGroup = {
 displayAllClassrooms(); 
 // displayClassroomsByFaculty('Design');
 // displayClassroomsByGroup(nerdsGroup);
+

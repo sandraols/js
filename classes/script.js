@@ -11,19 +11,33 @@ class Marker {
         const stringCharacters = string.length;
         const amountOfWhitespace = string.split(/\s/).length - 1;
         const charactersUsingInk = stringCharacters - amountOfWhitespace;
-        const amountOfInkUsed = charactersUsingInk * 0.5;
-        this.amountOfInk -= amountOfInkUsed;
-
-        if (amountOfInkUsed <= 100) {
-            document.write(`<p style="color:${this.color}">${string}</p><p>Ink left: ${this.amountOfInk}%`);
-        } else {
+        const amountOfInkNeeded = charactersUsingInk * 0.5;
+        if (amountOfInkNeeded > this.amountOfInk) {
+            const splitString = string.split('');
+            let newString = '';
+            let charactersPrinted = 0;
+            splitString.forEach(char => {
+                if (charactersPrinted < this.amountOfInk * 2) {
+                    newString += char;
+                    if (char != ' ') {
+                        charactersPrinted++
+                    }
+                }
+            });
+            document.write(`<p style="color:${this.color}">${newString}</p>`);
             document.write(`<p>Out of ink!</p>`);
+            this.amountOfInk = 0;
+        } else {
+            this.amountOfInk -= amountOfInkNeeded;
+            document.write(`<p style="color:${this.color}">${string}</p><p>Ink left: ${this.amountOfInk}%`);
         }
+
     }
 }
 
 const myMarker = new Marker('pink');
-myMarker.write('JavaScript classes introduced in ECMAScript 2015 are syntactical sugar over JavaScript\'s existing prototype-based inheritance.');
+myMarker.write(`JavaScript classes introduced in ECMAScript 2015 are syntactical sugar over JavaScript's existing prototype-based inheritance.`);
+myMarker.write(`JavaScript classes introduced in ECMAScript 2015 are syntactical sugar over JavaScript's existing prototype-based inheritance.`);
 
 // A class that describes a refillable marker that extends the class Marker, 
 // with a method that refills the marker to 100%.
@@ -32,10 +46,13 @@ class RefillableMarker extends Marker {
         super(color);
     }
     refill() {
-        document.write(`<p>Ink left: ${this.amountOfInk = 100}%</p>`);
+        this.amountOfInk = 100;
+        document.write(`<p>Ink left: ${this.amountOfInk}%</p>`);
     }
 }
 
 const myRefillableMarker = new RefillableMarker('purple');
-myRefillableMarker.write('JavaScript, often abbreviated as JS, is a programming language that conforms to the ECMAScript specification. JavaScript is high-level, often just-in-time compiled, and multi-paradigm.');
+myRefillableMarker.write('JavaScript, often abbreviated as JS, is a programming language that conforms to the ECMAScript specification. JavaScript is high-level, often just-in-time compiled, and multi-paradigm. ');
+myRefillableMarker.write('JavaScript, often abbreviated as JS, is a programming language that conforms to the ECMAScript specification. JavaScript is high-level, often just-in-time compiled, and multi-paradigm. ');
 myRefillableMarker.refill();
+myRefillableMarker.write('JavaScript, often abbreviated as JS, is a programming language that conforms to the ECMAScript specification. JavaScript is high-level, often just-in-time compiled, and multi-paradigm. ');
