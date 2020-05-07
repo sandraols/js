@@ -8,31 +8,43 @@ class Marker {
         this.amountOfInk = 100;
     }
     write(string) {
-        const stringCharacters = string.length;
-        const amountOfWhitespace = string.split(/\s/).length - 1;
-        const charactersUsingInk = stringCharacters - amountOfWhitespace;
-        const amountOfInkNeeded = charactersUsingInk * 0.5;
-        if (amountOfInkNeeded > this.amountOfInk) {
-            const splitString = string.split('');
-            let newString = '';
-            let charactersPrinted = 0;
-            splitString.forEach(char => {
-                if (charactersPrinted < this.amountOfInk * 2) {
-                    newString += char;
-                    if (char != ' ') {
-                        charactersPrinted++;
-                    }
-                }
-            });
-            document.write(`<p style="color:${this.color}">${newString}</p>`);
-            document.write(`<p>Out of ink!</p>`);
-            this.amountOfInk = 0;
-        } else {
-            this.amountOfInk -= amountOfInkNeeded;
-            document.write(`<p style="color:${this.color}">${string}</p><p>Ink left: ${this.amountOfInk}%`);
+        let newText = '';
+        for (let character of string) {
+            if (this.amountOfInk === 0) break; // exit the loop if there is no ink
+            newText += character;
+            if (character !== ' ') { // decrease the amount of ink for non-space characters
+                this.amountOfInk -= 0.5;
+            }
         }
-
+        document.write(`<p style="color: ${this.color}">${newText}</p>`);
+        document.write(`<p>Ink left: ${this.amountOfInk}%</p>`);
     }
+    // write(string) {
+    //     const stringCharacters = string.length;
+    //     const amountOfWhitespace = string.split(/\s/).length - 1;
+    //     const charactersUsingInk = stringCharacters - amountOfWhitespace;
+    //     const amountOfInkNeeded = charactersUsingInk * 0.5;
+    //     if (amountOfInkNeeded > this.amountOfInk) {
+    //         const splitString = string.split('');
+    //         let newString = '';
+    //         let charactersPrinted = 0;
+    //         splitString.forEach(char => {
+    //             if (charactersPrinted < this.amountOfInk * 2) {
+    //                 newString += char;
+    //                 if (char != ' ') {
+    //                     charactersPrinted++;
+    //                 }
+    //             }
+    //         });
+    //         document.write(`<p style="color:${this.color}">${newString}</p>`);
+    //         document.write(`<p>Out of ink!</p>`);
+    //         this.amountOfInk = 0;
+    //     } else {
+            // this.amountOfInk -= amountOfInkNeeded;
+            // document.write(`<p style="color:${this.color}">${string}</p><p>Ink left: ${this.amountOfInk}%`);
+        // }
+
+    // }
 }
 
 const myMarker = new Marker('pink');

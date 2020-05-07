@@ -1,4 +1,4 @@
-// Traffic lights that switches the color to the next one.
+// Traffic lights that switches the color to the next one on click.
 
 let button = document.getElementById('button');
 const redLight = document.getElementById('red-light');

@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* font-family: sans-serif; */
+    font-family: 'JF-Flat-regular';
+}
+
+@font-face {
+    font-family: 'JF-Flat-regular';
+    src: url('../assets/JF-Flat-regular.ttf') format('truetype');
+}
+
+html {
+    background: orange;
+    
+}
+
+.main__container {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 15vh;
+}
+
+.title__box {
+    width: 380px;
+    height: 100px;
+    padding: 7px;
+    display: flex;
+    align-items: center;
+}
+
+.extended__box {
+    display: none;
+    width: 380px;
+    padding: 20px 15px;
+    font-size: 14px;
+    line-height: 1.5;
+    box-shadow: inset 0px 0px 6px rgba(0, 0, 0, 0.45);
+}
+
+.image {
+    height: 58px;
+    width: 58px;
+    margin-right: 40px;
+}
+
+h2 {
+    font-size: 18px;
+}
+
+/* Location */
+
+.location {
+    background: #620808;
+    color: #FFE9C1;
+}
+
+/* Music */
+
+.music {
+    background: #A53F3F;
+    color: #F4CE74;
+}
+
+/* notes */
+
+.notes {
+    background: #F4CE74;
+    color: #620808;
+}
+
+/* books */
+
+.books {
+    background: #FFE9C1;
+    color: #620808;
+}
+
+/* books */
+
+.tendances {
+    background: #D5441C;
+    color: #FFE9C1;
+}
+
+
+
